@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
 
-    <link rel="icon" href="../public/pics/icon.png">
-    <link rel="stylesheet" href="../public/css/index.css">
+    <link rel="icon" href="./pics/icon.png">
+    <link rel="stylesheet" href="./css/index.css">
     <title>E-Kom</title>
 </head>
 <body>
@@ -31,10 +31,10 @@
             <!-- Mobile Menu open: "block", Menu closed: "hidden" -->
             <div class="md:flex items-center">
                 <div class="flex flex-col md:flex-row md:mx-6">
-                <a class="my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0" href="">Home</a>
-                <a class="my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0" href="index.html">Shop</a>
-                <a class="my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0" href="admin.html">Admin</a>
-                <a class="my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0" href="#">About</a>
+                <a class="my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0" href="/">Home</a>
+                <a class="my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0" href="/">Shop</a>
+                <a class="my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0" href="/newItem">Admin</a>
+                <a class="my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0" href="/">About</a>
                 </div>
         
                 <div class="flex justify-center md:block">
@@ -69,16 +69,18 @@
             </tr>
           </thead>
           <tbody>
+            <% itemsOfCart.forEach(item => { %>
+
             <tr>
               <td class="hidden pb-4 md:table-cell">
                 <a href="#">
-                  <img src="https://limg.app/i/Calm-Cormorant-Catholic-Pinball-Blaster-yM4oub.jpeg" class="w-20 rounded" alt="Thumbnail">
+                  <img src="<%= item.linkForImg %>" class="w-20 rounded" alt="Thumbnail">
                 </a>
               </td>
               <td>
                 <a href="#">
-                  <p class="mb-2 md:ml-4">Earphone</p>
-                  <form action="" method="POST">
+                  <p class="mb-2 md:ml-4"><%= item.name %></p>
+                  <form method="POST" action="/cart/remove/<%=item.id%>">
                     <button type="submit" class="text-gray-700 md:ml-4">
                       <small>(Remove item)</small>
                     </button>
@@ -88,89 +90,25 @@
               <td class="justify-center md:justify-end md:flex mt-6">
                 <div class="w-20 h-10">
                   <div class="relative flex flex-row w-full h-8">
-                  <input type="number" value="2" 
+                  <input type="number" value="1" id="<%= item.id %>" onchange="updateQty('<%=JSON.stringify(item)%>', this)"
                     class="w-full font-semibold text-center text-gray-700 bg-gray-200 outline-none focus:outline-none hover:text-black focus:text-black" />
                   </div>
                 </div>
               </td>
               <td class="hidden text-right md:table-cell">
                 <span class="text-sm lg:text-base font-medium">
-                  10.00€
+                  <%= item.price %>$
                 </span>
               </td>
               <td class="text-right">
-                <span class="text-sm lg:text-base font-medium">
-                  20.00€
+                <span class="text-sm lg:text-base font-medium" id="totalForOneItem">
+                  <%= item.price*item.qty %>
                 </span>
               </td>
             </tr> 
-            <tr>
-              <td class="hidden pb-4 md:table-cell">
-                <a href="#">
-                  <img src="https://limg.app/i/Cute-Constrictor-Super-Sexy-Military-Enforcer-W7mvBp.png" class="w-20 rounded" alt="Thumbnail">
-                </a>
-              </td>
-              <td>
-                <p class="mb-2 md:ml-4">Tesla Model 3</p>
-                <form action="" method="POST">
-                  <button type="submit" class="text-gray-700 md:ml-4">
-                    <small>(Remove item)</small>
-                  </button>
-                </form>
-              </td>
-              <td class="justify-center md:justify-end md:flex md:mt-4">
-              <div class="w-20 h-10">
-                <div class="relative flex flex-row w-full h-8">
-                <input type="number" value="3" 
-                  class="w-full font-semibold text-center text-gray-700 bg-gray-200 outline-none focus:outline-none hover:text-black focus:text-black" />
-                </div>
-              </div>
-              </td>
-              <td class="hidden text-right md:table-cell">
-                <span class="text-sm lg:text-base font-medium">
-                  49,600.01€
-                </span>
-              </td>
-              <td class="text-right">
-                <span class="text-sm lg:text-base font-medium">
-                  148,800.03€
-                </span>
-              </td>
-            </tr> 
-            <tr>
-              <td class="hidden pb-4 md:table-cell">
-                <a href="#">
-                  <img src="https://limg.app/i/Successful-Spider-Biblical-Mutant---Total-War-lKoE7D.jpeg" class="w-20 rounded" alt="Thumbnail">
-                </a>
-              </td>
-              <td>
-                <p class="mb-2 md:ml-4">Bic 4 colour pen</p>
-                <form action="" method="POST">
-                  <button type="submit" class="text-gray-700 md:ml-4">
-                    <small>(Remove item)</small>
-                  </button>
-                </form>
-              </td>
-              <td class="justify-center md:justify-end md:flex md:mt-8">
-              <div class="w-20 h-10">
-                <div class="relative flex flex-row w-full h-8">
-                <input type="number" value="5" 
-                  class="w-full font-semibold text-center text-gray-700 bg-gray-200 outline-none focus:outline-none hover:text-black focus:text-black" />
-                </div>
-              </div>
-  
-              </td>
-              <td class="hidden text-right md:table-cell">
-                <span class="text-sm lg:text-base font-medium">
-                  1.50€
-                </span>
-              </td>
-              <td class="text-right">
-                <span class="text-sm lg:text-base font-medium">
-                  7.50€
-                </span>
-              </td>
-            </tr> 
+
+          <% }) %>
+            
           </tbody>
         </table>
         <hr class="pb-6 mt-6">
@@ -266,6 +204,22 @@
     </div>
   </div>
         
-
 </body>
+    <script>
+      function updateQty(item, e)
+      {
+        // alert(e.value)
+        const obj = JSON.parse(item)
+        obj.updatedQty = e.value
+        fetch("/cart/update", {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(obj)
+                    }).then((res) => res.json())
+                    .then((data) => console.log(data))
+                    .catch((err) => console.log(err))
+      }
+    </script>
 </html>
