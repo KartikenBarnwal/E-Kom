@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+
+    <link rel="icon" href="./pics/icon.png">
+    <link rel="stylesheet" href="./css/index.css">
+    <title>E-Kom</title>
+</head>
+<body>
+    <!-- component -->
+        <nav class="bg-white shadow">
+            <div class="container mx-auto px-6 py-3 md:flex md:justify-between md:items-center">
+            <div class="flex justify-between items-center">
+                <div>
+                <a class="text-gray-800 text-xl font-bold md:text-2xl hover:text-gray-700" href="#">E-Kom</a>
+                </div>
+        
+                <!-- Mobile menu button -->
+                <div class="flex md:hidden">
+                <button type="button" class="text-gray-500 hover:text-gray-600 focus:outline-none focus:text-gray-600" aria-label="toggle menu">
+                    <svg viewBox="0 0 24 24" class="h-6 w-6 fill-current">
+                    <path fill-rule="evenodd" d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"></path>
+                    </svg>
+                </button>
+                </div>
+            </div>
+        
+            <!-- Mobile Menu open: "block", Menu closed: "hidden" -->
+            <div class="md:flex items-center">
+                <div class="flex flex-col md:flex-row md:mx-6">
+                <a class="my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0" href="/">Home</a>
+                <a class="my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0" href="/">Shop</a>
+                <a class="my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0" href="#">Admin</a>
+                <a class="my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0" href="/">About</a>
+                </div>
+        
+                <div class="flex justify-center md:block">
+                <a class="relative text-gray-700 hover:text-gray-600" href="cart.html">
+                    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 3H5L5.4 5M7 13H17L21 5H5.4M7 13L5.4 5M7 13L4.70711 15.2929C4.07714 15.9229 4.52331 17 5.41421 17H17M17 17C15.8954 17 15 17.8954 15 19C15 20.1046 15.8954 21 17 21C18.1046 21 19 20.1046 19 19C19 17.8954 18.1046 17 17 17ZM9 19C9 20.1046 8.10457 21 7 21C5.89543 21 5 20.1046 5 19C5 17.8954 5.89543 17 7 17C8.10457 17 9 17.8954 9 19Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+        
+                    <span class="absolute top-0 left-0 rounded-full bg-indigo-500 text-white p-1 text-xs"></span>
+                </a>
+                </div>
+            </div>
+            </div>
+        </nav>
+
+    <!-- Main Body -->
+        <div class="addItem">
+           
+        <!-- component -->
+            <div class="bg-0 min-h-screen pt-2 font-mono my-16">
+                <div class="container mx-auto">
+                    <div class="inputs w-full max-w-2xl p-6 mx-auto">
+                        <h2 class="text-2xl text-gray-100">Add Item For The Shop (Only for Admin)</h2>
+                        <form class="mt-6 border-t border-gray-400 pt-4" method="POST" action="/newItem/save">  
+                            <div class='flex flex-wrap -mx-3 mb-6'>
+                                <div class='w-full md:w-full px-3 mb-6'>
+                                    <label class='block uppercase tracking-wide text-gray-300 text-xs font-bold mb-2' for='grid-text-1'>password</label>
+                                    <input class='appearance-none block w-full bg-white text-gray-700 border border-gray-400 shadow-inner rounded-md py-3 px-4 leading-tight focus:outline-none  focus:border-gray-500' id='grid-text-1' type='text' placeholder='Enter password'  required>
+                                </div>
+                                
+                                <div class="personal w-full border-t border-gray-400 pt-4">
+                                    <h2 class="text-2xl text-gray-100">Product info:</h2><br>
+                                    <div class='w-full md:w-full px-3 mb-6'>
+                                        <label class='block uppercase tracking-wide text-gray-300 text-xs font-bold mb-2'>diaplay name</label>
+                                        <input name="name" class='appearance-none block w-full bg-white text-gray-700 border border-gray-400 shadow-inner rounded-md py-3 px-4 leading-tight focus:outline-none  focus:border-gray-500' type='text'  required>
+                                    </div>
+                                    <div class="flex items-center justify-between mt-4">
+                                        <div class='w-full md:w-1/2 px-3 mb-6'>
+                                            <label class='block uppercase tracking-wide text-gray-300 text-xs font-bold mb-2' >selling price ($)</label>
+                                            <input name="price" class='appearance-none block w-full bg-white text-gray-700 border border-gray-400 shadow-inner rounded-md py-3 px-4 leading-tight focus:outline-none  focus:border-gray-500' type='text'  required>
+                                        </div>
+                                        <div class='w-full md:w-1/2 px-3 mb-6'>
+                                            <label class='block uppercase tracking-wide text-gray-300 text-xs font-bold mb-2' >market price ($)</label>
+                                            <input class='appearance-none block w-full bg-white text-gray-700 border border-gray-400 shadow-inner rounded-md py-3 px-4 leading-tight focus:outline-none  focus:border-gray-500' type='text'  required>
+                                        </div>
+                                    </div>
+                                    <div class='w-full md:w-full px-3 mb-6'>
+                                        <label class='block uppercase tracking-wide text-gray-300 text-xs font-bold mb-2'>link for display picture</label>
+                                        <input name="linkForImg" class='appearance-none block w-full bg-white text-gray-700 border border-gray-400 shadow-inner rounded-md py-3 px-4 leading-tight focus:outline-none  focus:border-gray-500' type='text'  required>
+                                    </div>
+                                    <div class='w-full md:w-full px-3 mb-6'>
+                                        <label class='block uppercase tracking-wide text-gray-300 text-xs font-bold mb-2' >Describe the product</label>
+                                        <textarea name="description" class='bg-gray-100 rounded-md border leading-normal resize-none w-full h-20 py-2 px-3 shadow-inner border border-gray-400 font-medium placeholder-gray-700 focus:outline-none focus:bg-white'  required></textarea>
+                                    </div>
+                                    <div class="flex justify-end">
+                                        <button class="appearance-none bg-gray-200 text-gray-900 px-2 py-1 shadow-sm border border-gray-400 rounded-md mr-3" type="submit">save changes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+
+</body>
+</html>
